@@ -1,0 +1,31 @@
+import { Link } from "react-router-dom";
+import { formatNumber } from "../utils/formatNumber";
+
+const WatchVideoCard = ({ video }) => {
+  const { id, snippet, statistics } = video;
+  const { title, channelTitle, thumbnails } = snippet;
+
+  return (
+    <Link to={`/watch?v=${id}`} className="flex gap-3 mb-4 w-full">
+      {/* Thumbnail */}
+      <img
+        src={thumbnails?.medium?.url}
+        alt="thumbnail"
+        className="w-40 h-24 rounded-lg object-cover flex-shrink-0"
+      />
+
+      {/* Info */}
+      <div className="min-w-0">
+        <p className="text-sm font-semibold leading-snug line-clamp-2">
+          {title}
+        </p>
+        <p className="text-xs text-gray-600 mt-1 truncate">{channelTitle}</p>
+        <p className="text-xs text-gray-500 truncate">
+          {formatNumber(Number(statistics.viewCount))} views
+        </p>
+      </div>
+    </Link>
+  );
+};
+
+export default WatchVideoCard;
