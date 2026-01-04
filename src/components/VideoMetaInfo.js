@@ -1,19 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { formatNumber } from "../utils/formatNumber";
 
 const VideoMetaInfo = ({ videoId }) => {
   const [videoInfo, setVideoInfo] = useState(null);
 
-  useEffect(() => {
-    getVideoDetails();
-  }, [videoId]);
-
-  const getVideoDetails = async () => {
+  const getVideoDetails = useCallback(async () => {
     const data = await fetch(`/.netlify/functions/videos?videoId=${videoId}`);
     const json = await data.json();
-    const playingVideoInfo = json.items.filter((video) => video.id === videoId);
-    setVideoInfo(playingVideoInfo[0]);
-  };
+    setVideoInfo(json.items?.[0]);
+  }, [videoId]);
+
+  useEffect(() => {
+    getVideoDetails();
+  }, [getVideoDetails]);
 
   if (!videoInfo) return null;
 
