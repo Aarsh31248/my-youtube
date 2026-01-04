@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toogleMenu } from "../redux/appSlice";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { cacheResults } from "../redux/searchSlice";
 
 const Head = () => {
@@ -10,18 +10,21 @@ const Head = () => {
   const dispatch = useDispatch();
   const searchCache = useSelector((store) => store.search);
 
-  const getSearchSuggestions = async () => {
+  const getSearchSuggestions = useCallback(async () => {
     const data = await fetch(`/.netlify/functions/search?q=${searchQuery}`);
     const json = await data.json();
     setSuggestions(json[1]);
+
     dispatch(
       cacheResults({
         [searchQuery]: json[1],
       })
     );
-  };
+  }, [searchQuery, dispatch]);
 
   useEffect(() => {
+    if (!searchQuery) return;
+
     const timer = setTimeout(() => {
       if (searchCache[searchQuery]) {
         setSuggestions(searchCache[searchQuery]);
@@ -30,10 +33,8 @@ const Head = () => {
       }
     }, 200);
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [searchQuery]);
+    return () => clearTimeout(timer);
+  }, [searchQuery, searchCache, getSearchSuggestions]);
 
   return (
     <div className="sticky top-0 z-[60] bg-white grid grid-cols-12 items-center p-3 shadow-lg">

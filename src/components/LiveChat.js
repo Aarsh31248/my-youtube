@@ -16,7 +16,7 @@ const LiveChat = () => {
     }, 700);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [dispatch]);
 
   if (!isChatOpen) {
     return (
