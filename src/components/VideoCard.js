@@ -6,6 +6,9 @@ const VideoCard = ({ info, isMenuOpen }) => {
   const { snippet, statistics } = info;
   const { title, channelTitle, thumbnails, publishedAt } = snippet;
 
+  if (!thumbnails?.high && !thumbnails?.maxres) return null;
+  if (!statistics?.viewCount) return null;
+
   const formattedDate = new Date(publishedAt).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
@@ -22,6 +25,9 @@ const VideoCard = ({ info, isMenuOpen }) => {
         src={thumbnails?.maxres?.url || thumbnails?.high?.url}
         alt="thumbnail"
         className="rounded-xl"
+        onError={(e) => {
+          e.currentTarget.style.display = "none";
+        }}
       />
 
       <ul className="ml-5 mt-1">

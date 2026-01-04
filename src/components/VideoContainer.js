@@ -11,7 +11,14 @@ const VideoContainer = () => {
     const data = await fetch("/.netlify/functions/videos");
 
     const json = await data.json();
-    setVideos(json.items);
+    const validVideos = (json.items || []).filter(
+      (video) =>
+        typeof video.id === "string" &&
+        (video.snippet?.thumbnails?.maxres?.url ||
+          video.snippet?.thumbnails?.high?.url) &&
+        video.statistics?.viewCount
+    );
+    setVideos(validVideos);
   };
 
   useEffect(() => {
