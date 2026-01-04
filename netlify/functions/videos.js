@@ -1,5 +1,3 @@
-import fetch from "node-fetch";
-
 export const handler = async (event) => {
   try {
     const API_KEY = process.env.YT_API_KEY;
@@ -12,7 +10,6 @@ export const handler = async (event) => {
     }
 
     const videoId = event.queryStringParameters?.videoId;
-
     const BASE_URL = "https://youtube.googleapis.com/youtube/v3/videos";
 
     const url = videoId
@@ -28,7 +25,7 @@ export const handler = async (event) => {
     };
   } catch (err) {
     return {
-      statusCode: 500,
+      statusCode: 502,
       body: JSON.stringify({ error: "Failed to fetch videos" }),
     };
   }

@@ -1,5 +1,3 @@
-import fetch from "node-fetch";
-
 export const handler = async (event) => {
   try {
     const q = event.queryStringParameters?.q;
@@ -7,7 +5,7 @@ export const handler = async (event) => {
     if (!q) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: "Query is required" }),
+        body: JSON.stringify({ error: "Query missing" }),
       };
     }
 
@@ -24,7 +22,7 @@ export const handler = async (event) => {
     };
   } catch (err) {
     return {
-      statusCode: 500,
+      statusCode: 502,
       body: JSON.stringify({ error: "Failed to fetch suggestions" }),
     };
   }
