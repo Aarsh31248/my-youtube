@@ -6,7 +6,7 @@ const MainContainer = () => {
   const isWatchPage = location.pathname === "/watch";
 
   return (
-    <div className="flex-1 h-full overflow-y-auto">
+    <div className="flex-1 h-full overflow-y-auto" data-scroll-container>
       {!isWatchPage && <ButtonList />}
       <Outlet />
     </div>

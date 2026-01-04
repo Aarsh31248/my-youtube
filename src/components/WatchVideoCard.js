@@ -7,14 +7,12 @@ const WatchVideoCard = ({ video }) => {
 
   return (
     <Link to={`/watch?v=${id}`} className="flex gap-3 mb-4 w-full">
-      {/* Thumbnail */}
       <img
         src={thumbnails?.medium?.url}
         alt="thumbnail"
         className="w-40 h-24 rounded-lg object-cover flex-shrink-0"
       />
 
-      {/* Info */}
       <div className="min-w-0">
         <p className="text-sm font-semibold leading-snug line-clamp-2">
           {title}

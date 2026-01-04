@@ -14,29 +14,21 @@ const WatchPage = () => {
 
   const videoId = searchParams.get("v");
 
-  // Close sidebar on watch page
   useEffect(() => {
     dispatch(closeMenu());
   }, [dispatch]);
 
-  // 🔥 SCROLL TO TOP WHEN VIDEO CHANGES
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "auto",
-      });
-    }
-  }, [videoId]);
+ useEffect(() => {
+  window.scrollTo(0, 0);
+}, [videoId]);
+
+
 
   return (
     <div
-      ref={scrollRef}
-      className="px-10 mt-2 h-full overflow-y-auto"
+      className="px-10 mt-2 h-full"
     >
       <div className="grid grid-cols-[1fr_380px] gap-6">
-        {/* LEFT SIDE */}
         <div>
           <iframe
             className="rounded-xl"
@@ -52,7 +44,6 @@ const WatchPage = () => {
           <CommentsContainer />
         </div>
 
-        {/* RIGHT SIDE */}
         <div>
           <LiveChat />
           <WatchSuggestions />

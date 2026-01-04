@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { YOUTUBE_VIDEOS_API } from "../utils/constants";
 import { formatNumber } from "../utils/formatNumber";
 
 const VideoMetaInfo = ({ videoId }) => {
@@ -10,7 +9,7 @@ const VideoMetaInfo = ({ videoId }) => {
   }, [videoId]);
 
   const getVideoDetails = async () => {
-    const data = await fetch(YOUTUBE_VIDEOS_API);
+    const data = await fetch(`/.netlify/functions/videos?videoId=${videoId}`);
     const json = await data.json();
     const playingVideoInfo = json.items.filter((video) => video.id === videoId);
     setVideoInfo(playingVideoInfo[0]);

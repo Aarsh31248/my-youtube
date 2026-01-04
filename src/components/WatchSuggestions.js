@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { YOUTUBE_VIDEOS_API } from "../utils/constants";
 import WatchVideoCard from "./WatchVideoCard";
 
 const WatchSuggestions = () => {
   const [videos, setVideos] = useState([]);
 
   const getVideos = async () => {
-    const data = await fetch(YOUTUBE_VIDEOS_API);
+    const data = await fetch("/.netlify/functions/videos");
+
     const json = await data.json();
     setVideos(json.items);
   };

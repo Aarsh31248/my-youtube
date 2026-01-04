@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toogleMenu } from "../redux/appSlice";
 import { useEffect, useState } from "react";
-import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../redux/searchSlice";
 
 const Head = () => {
@@ -12,7 +11,7 @@ const Head = () => {
   const searchCache = useSelector((store) => store.search);
 
   const getSearchSuggestions = async () => {
-    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const data = await fetch(`/.netlify/functions/search?q=${searchQuery}`);
     const json = await data.json();
     setSuggestions(json[1]);
     dispatch(

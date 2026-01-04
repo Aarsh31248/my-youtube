@@ -29,7 +29,7 @@ const SideBar = () => {
     }
   `}
       >
-        <ul className="text-lg font-semibold ml-2 [&>li:hover]:text-gray-900 [&>li:hover]:text-xl [&>li]:pb-2 cursor-pointer">
+        <ul className=" font-semibold ml-2 [&>li:hover]:text-gray-700 [&>li:hover]:text-lg [&>li]:pb-2 cursor-pointer">
           <li>
             <Link to={"/"}>
               <i className="fa-solid fa-house mr-2"></i> Home
@@ -48,10 +48,9 @@ const SideBar = () => {
 
         <p className="h-[1.5px] bg-gray-300 mt-3"></p>
 
-        {/* YOU */}
         <button
           onClick={() => setShowYou(!showYou)}
-          className="w-full flex justify-between items-center font-bold pt-5 text-[27px]"
+          className="w-full flex justify-between items-center font-bold pt-5 text-[23px]"
         >
           <span>You</span>
           <i
@@ -62,7 +61,7 @@ const SideBar = () => {
         </button>
 
         {showYou && (
-          <ul className="mt-2 text-lg ml-2 [&>li:hover]:text-gray-900 [&>li:hover]:font-semibold [&>li]:pb-2 cursor-pointer">
+          <ul className="mt-2 ml-2 [&>li:hover]:text-gray-900 [&>li:hover]:font-semibold [&>li]:pb-2 cursor-pointer">
             <li>
               <i className="fa-solid fa-clock-rotate-left"></i> History
             </li>
@@ -83,10 +82,9 @@ const SideBar = () => {
 
         <p className="h-[1.5px] bg-gray-300 mt-3"></p>
 
-        {/* EXPLORE */}
         <button
           onClick={() => setShowExplore(!showExplore)}
-          className="w-full flex justify-between items-center font-bold pt-5 text-[27px]"
+          className="w-full flex justify-between items-center font-bold pt-5 text-[23px]"
         >
           <span>Explore</span>
           <i
@@ -97,7 +95,7 @@ const SideBar = () => {
         </button>
 
         {showExplore && (
-          <ul className="mt-2 text-lg ml-2 [&>li:hover]:text-gray-900 [&>li:hover]:font-semibold [&>li]:pb-2 cursor-pointer">
+          <ul className="mt-2 ml-2 [&>li:hover]:text-gray-900 [&>li:hover]:font-semibold [&>li]:pb-2 cursor-pointer">
             <li>
               <i className="fa-solid fa-music"></i> Music
             </li>
