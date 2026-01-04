@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../redux/appSlice";
 import { useSearchParams } from "react-router-dom";
@@ -10,7 +10,6 @@ import WatchSuggestions from "./WatchSuggestions";
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
-  const scrollRef = useRef(null);
 
   const videoId = searchParams.get("v");
 
@@ -18,16 +17,8 @@ const WatchPage = () => {
     dispatch(closeMenu());
   }, [dispatch]);
 
- useEffect(() => {
-  window.scrollTo(0, 0);
-}, [videoId]);
-
-
-
   return (
-    <div
-      className="px-10 mt-2 h-full"
-    >
+    <div className="px-10 mt-2 h-full">
       <div className="grid grid-cols-[1fr_380px] gap-6">
         <div>
           <iframe
