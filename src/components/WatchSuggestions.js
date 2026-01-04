@@ -5,10 +5,18 @@ const WatchSuggestions = () => {
   const [videos, setVideos] = useState([]);
 
   const getVideos = async () => {
-    const data = await fetch("/.netlify/functions/videos");
+    try {
+      const res = await fetch("/.netlify/functions/videos");
+      const json = await res.json();
 
-    const json = await data.json();
-    setVideos(json.items);
+      if (Array.isArray(json?.items)) {
+        setVideos(json.items);
+      } else {
+        setVideos([]);
+      }
+    } catch (err) {
+      setVideos([]);
+    }
   };
 
   useEffect(() => {
@@ -19,9 +27,8 @@ const WatchSuggestions = () => {
     <div className="mt-4">
       <h2 className="font-semibold mb-3 text-lg">Suggested videos</h2>
 
-      {videos.map((video) => (
-        <WatchVideoCard key={video.id} video={video} />
-      ))}
+      {Array.isArray(videos) &&
+        videos.map((video) => <WatchVideoCard key={video.id} video={video} />)}
     </div>
   );
 };
