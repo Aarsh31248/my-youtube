@@ -39,7 +39,7 @@ const Head = () => {
   return (
     <div className="sticky top-0 z-[60] bg-white flex items-center justify-between p-3 shadow-lg sm:grid sm:grid-cols-12">
       {/* Left section */}
-      <div className="flex items-center gap-4 sm:col-span-2">
+      <div className="flex items-center gap-4 sm:col-span-2 shrink-0">
         <img
           onClick={() => dispatch(toogleMenu())}
           className="w-7 h-8 cursor-pointer"
@@ -48,7 +48,11 @@ const Head = () => {
         />
         <a href="/">
           <img
-            className="h-6 cursor-pointer"
+            className="
+              h-5 sm:h-6
+              min-w-[72px] sm:min-w-[96px]
+              object-contain
+              cursor-pointer"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2560px-YouTube_Logo_2017.svg.png"
             alt="youtube-logo"
           />
