@@ -38,7 +38,7 @@ const VideoCard = ({ info, isMenuOpen }) => {
       />
 
       <ul className="ml-5 mt-1">
-        <li className="relative font-bold pr-6">
+        <li className="relative font-bold pr-6 line-clamp-2 break-words">
           {title}
           <i className="fa-solid fa-ellipsis-vertical absolute right-0 top-1"></i>
         </li>

@@ -60,8 +60,8 @@ const Head = () => {
       </div>
 
       {/* Search Section*/}
-      <div className="flex-1  px-3 sm:col-span-8 sm:flex sm:justify-center">
-        <div className="relative w-full max-w-2xl">
+      <div className="col-span-6 sm:col-span-8 px-2 flex justify-center min-w-0">
+        <div className="relative w-full max-w-[180px] sm:max-w-2xl">
           <div className="flex items-center">
             <input
               value={searchQuery}
@@ -70,7 +70,7 @@ const Head = () => {
               onBlur={() => setShowSuggestions(false)}
               placeholder="Search"
               type="text"
-              className="flex-1 border border-gray-400 rounded-l-full p-2 text-sm sm:text-base"
+              className="flex-1 min-w-0 border border-gray-400 rounded-l-full p-2 text-sm sm:text-base"
             />
             <button className="border border-gray-400 rounded-r-full px-4 hover:bg-gray-200">
               <i className="fa-solid fa-magnifying-glass py-[10px] sm:py-3"></i>
