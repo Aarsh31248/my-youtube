@@ -19,7 +19,7 @@ const VideoCard = ({ info, isMenuOpen }) => {
     <div
       className={`p-1 m-2 hover:shadow-lg rounded-xl hover:bg-gray-200 cursor-pointer
         transition-all duration-300 ease-out hover:scale-[1.01]
-        ${isMenuOpen ? "w-[400px]" : "w-[484px]"}`}
+        ${isMenuOpen ? "w-[400px]" : "w-[480px]"}`}
     >
       <img
         src={thumbnails?.maxres?.url || thumbnails?.high?.url}
