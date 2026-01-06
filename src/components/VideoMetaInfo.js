@@ -19,55 +19,60 @@ const VideoMetaInfo = ({ videoId }) => {
   const { snippet, statistics } = videoInfo;
 
   return (
-    <div className="mt-2">
-      <h1 className="text-xl font-bold mb-3">{snippet.title}</h1>
+    <div className="mt-3 sm:-mt-1">
+      <h1 className="text-base sm:text-xl font-bold mb-3">{snippet.title}</h1>
 
-      <div className="flex gap-28 items-center">
-        <div className="flex items-center gap-4">
-          <img
-            className="h-10 w-10 rounded-full cursor-pointer"
-            src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
-            alt="channel"
-          />
+      <div className="flex flex-col sm:flex-row sm:items-center sm:gap-24 sm:-mt-1">
+        <div className="flex items-center justify-between sm:justify-start gap-3 sm:gap-4">
+          <div className="flex items-center gap-3">
+            <img
+              className="h-9 w-9 sm:h-10 sm:w-10 rounded-full cursor-pointer"
+              src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
+              alt="channel"
+            />
 
-          <div>
-            <p className="font-semibold">{snippet.channelTitle}</p>
-            <p className="text-sm text-gray-500 font-semibold -mt-1">
-              {formatNumber(Number(statistics.viewCount))} subscribers
-            </p>
+            <div>
+              <p className="font-semibold text-sm sm:text-base">
+                {snippet.channelTitle}
+              </p>
+              <p className="text-xs sm:text-sm text-gray-600 font-semibold -mt-1">
+                {formatNumber(Number(statistics.viewCount))} subscribers
+              </p>
+            </div>
           </div>
 
-          <button className="bg-black text-white px-5 py-2 rounded-full font-semibold hover:bg-gray-800">
+          <button className="bg-black text-white px-4 py-2 sm:px-5 sm:py-2 rounded-full font-semibold hover:bg-gray-800 text-sm sm:text-base">
             Subscribe
           </button>
         </div>
 
-        <div className="flex items-center gap-2">
-          <button className="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full hover:bg-gray-200">
+        <div className="flex gap-2 mt-3 sm:mt-0 overflow-x-auto scrollbar-hide">
+          <button className="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-full hover:bg-gray-200 text-sm sm:text-lg whitespace-nowrap">
             <i className="fa-regular fa-thumbs-up"></i>
-            <span>Like</span>
+            Like
           </button>
 
-          <button className="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full hover:bg-gray-200">
+          <button className="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-full hover:bg-gray-200 text-sm sm:text-lg whitespace-nowrap">
             <i className="fa-regular fa-thumbs-down"></i>
-            <span>Dislike</span>
+            Dislike
           </button>
 
-          <button className="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full hover:bg-gray-200">
+          <button className="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-full hover:bg-gray-200 text-sm sm:text-lg whitespace-nowrap">
             <i className="fa-solid fa-share"></i>
-            <span>Share</span>
+            Share
           </button>
 
-          <button className="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full hover:bg-gray-200">
+          <button className="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-full hover:bg-gray-200 text-sm sm:text-lg whitespace-nowrap">
             <i className="fa-regular fa-bookmark"></i>
-            <span>Save</span>
+            Save
           </button>
 
-          <button className="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full hover:bg-gray-200">
+          <button className="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-full hover:bg-gray-200 text-sm sm:text-lg whitespace-nowrap">
             <i className="fa-solid fa-download"></i>
-            <span>Download</span>
+            Download
           </button>
-          <button className="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full hover:bg-gray-200">
+
+          <button className="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-full hover:bg-gray-200 text-sm sm:text-lg">
             <i className="fa-solid fa-ellipsis"></i>
           </button>
         </div>

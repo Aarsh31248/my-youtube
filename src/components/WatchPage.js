@@ -10,7 +10,6 @@ import WatchSuggestions from "./WatchSuggestions";
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
-
   const videoId = searchParams.get("v");
 
   useEffect(() => {
@@ -18,25 +17,35 @@ const WatchPage = () => {
   }, [dispatch]);
 
   return (
-    <div className="px-10 mt-2 h-full">
-      <div className="grid grid-cols-[1fr_380px] gap-6">
+    <div className="px-3 sm:px-10 mt-2 h-full">
+      <div className="grid grid-cols-1 sm:grid-cols-[1fr_380px] gap-4 sm:gap-6">
+        
         <div>
-          <iframe
-            className="rounded-xl"
-            width="100%"
-            height="570"
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
-            title="YouTube video player"
-            allow="autoplay; encrypted-media; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+          <div className="w-full aspect-video">
+            <iframe
+              className="w-full sm:h-[570px] h-full rounded-xl"
+              src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+              title="YouTube video player"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
 
           <VideoMetaInfo videoId={videoId} />
+
+          <div className="block sm:hidden mt-4">
+            <LiveChat />
+          </div>
+
           <CommentsContainer />
         </div>
 
-        <div>
+        <div className="hidden sm:flex flex-col gap-4">
           <LiveChat />
+          <WatchSuggestions />
+        </div>
+
+        <div className="block sm:hidden">
           <WatchSuggestions />
         </div>
       </div>

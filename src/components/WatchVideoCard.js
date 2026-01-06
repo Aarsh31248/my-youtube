@@ -6,18 +6,24 @@ const WatchVideoCard = ({ video }) => {
   const { title, channelTitle, thumbnails } = snippet;
 
   return (
-    <Link to={`/watch?v=${id}`} className="flex gap-3 mb-4 w-full">
+    <Link to={`/watch?v=${id}`} className="flex gap-3 mb-3 sm:mb-4 w-full">
       <img
         src={thumbnails?.medium?.url}
         alt="thumbnail"
-        className="w-40 h-24 rounded-lg object-cover flex-shrink-0"
+        className="
+          w-32 h-20
+          sm:w-40 sm:h-24
+          rounded-lg object-cover flex-shrink-0
+        "
       />
 
       <div className="min-w-0">
         <p className="text-sm font-semibold leading-snug line-clamp-2">
           {title}
         </p>
+
         <p className="text-xs text-gray-600 mt-1 truncate">{channelTitle}</p>
+
         <p className="text-xs text-gray-500 truncate">
           {formatNumber(Number(statistics.viewCount))} views
         </p>

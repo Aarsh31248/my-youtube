@@ -16,20 +16,22 @@ const SideBar = () => {
   return (
     <>
       {isWatchPage && (
-        <div className="fixed top-[64px] left-0 right-0 bottom-0 bg-black/40 z-40"></div>
+        <div className="fixed inset-0 bg-black/40 z-40"></div>
       )}
 
       <div
         className={`
-    p-5 shadow-lg bg-white overflow-y-auto scrollbar-hide z-50
-    ${
-      isWatchPage
-        ? "fixed top-[64px] left-0 w-60 h-[calc(100vh-64px)]"
-        : "relative w-60 h-full"
-    }
-  `}
+          p-5 bg-white shadow-lg overflow-y-auto scrollbar-hide z-50
+          w-[70%] max-w-[260px] sm:w-60
+
+          ${
+            isWatchPage
+              ? "fixed top-[64px] left-0 h-[calc(100vh-64px)]"
+              : "fixed top-[64px] left-0 h-[calc(100vh-64px)] sm:static sm:h-full"
+          }
+        `}
       >
-        <ul className=" font-semibold ml-2 [&>li:hover]:text-gray-700 [&>li:hover]:text-lg [&>li]:pb-2 cursor-pointer">
+        <ul className="font-semibold ml-2 [&>li:hover]:text-gray-700 [&>li:hover]:text-lg [&>li]:pb-2 cursor-pointer">
           <li>
             <Link to={"/"}>
               <i className="fa-solid fa-house mr-2"></i> Home
@@ -50,7 +52,7 @@ const SideBar = () => {
 
         <button
           onClick={() => setShowYou(!showYou)}
-          className="w-full flex justify-between items-center font-bold pt-5 text-[23px]"
+          className="w-full flex justify-between items-center font-bold pt-5 text-lg sm:text-[23px]"
         >
           <span>You</span>
           <i
@@ -61,22 +63,12 @@ const SideBar = () => {
         </button>
 
         {showYou && (
-          <ul className="mt-2 ml-2 [&>li:hover]:text-gray-900 [&>li:hover]:font-semibold [&>li]:pb-2 cursor-pointer">
-            <li>
-              <i className="fa-solid fa-clock-rotate-left"></i> History
-            </li>
-            <li>
-              <i className="fa-brands fa-google-play"></i> Playlist
-            </li>
-            <li>
-              <i className="fa-solid fa-clock"></i> Watch Later
-            </li>
-            <li>
-              <i className="fa-solid fa-thumbs-up"></i> Liked Videos
-            </li>
-            <li>
-              <i className="fa-solid fa-down-long"></i> Downloads
-            </li>
+          <ul className="mt-2 ml-2 text-sm sm:text-base [&>li:hover]:text-gray-900 [&>li:hover]:font-semibold [&>li]:pb-2 cursor-pointer">
+            <li><i className="fa-solid fa-clock-rotate-left mr-2"></i> History</li>
+            <li><i className="fa-brands fa-google-play mr-2"></i> Playlist</li>
+            <li><i className="fa-solid fa-clock mr-2"></i> Watch Later</li>
+            <li><i className="fa-solid fa-thumbs-up mr-2"></i> Liked Videos</li>
+            <li><i className="fa-solid fa-down-long mr-2"></i> Downloads</li>
           </ul>
         )}
 
@@ -84,7 +76,7 @@ const SideBar = () => {
 
         <button
           onClick={() => setShowExplore(!showExplore)}
-          className="w-full flex justify-between items-center font-bold pt-5 text-[23px]"
+          className="w-full flex justify-between items-center font-bold pt-5 text-lg sm:text-[23px]"
         >
           <span>Explore</span>
           <i
@@ -95,35 +87,17 @@ const SideBar = () => {
         </button>
 
         {showExplore && (
-          <ul className="mt-2 ml-2 [&>li:hover]:text-gray-900 [&>li:hover]:font-semibold [&>li]:pb-2 cursor-pointer">
-            <li>
-              <i className="fa-solid fa-music"></i> Music
-            </li>
-            <li>
-              <i className="fa-solid fa-gamepad"></i> Gaming
-            </li>
-            <li>
-              <i className="fa-solid fa-newspaper"></i> News
-            </li>
-            <li>
-              <i className="fa-solid fa-trophy"></i> Sports
-            </li>
-            <li>
-              <i className="fa-solid fa-film"></i> Movies
-            </li>
-            <li>
-              <i className="fa-solid fa-graduation-cap"></i> Courses
-            </li>
-            <li>
-              <i className="fa-solid fa-cart-shopping"></i> Shopping
-            </li>
-            <li>
-              <i className="fa-solid fa-vest-patches"></i> Fashion
-            </li>
+          <ul className="mt-2 ml-2 text-sm sm:text-base [&>li:hover]:text-gray-900 [&>li:hover]:font-semibold [&>li]:pb-2 cursor-pointer">
+            <li><i className="fa-solid fa-music mr-2"></i> Music</li>
+            <li><i className="fa-solid fa-gamepad mr-2"></i> Gaming</li>
+            <li><i className="fa-solid fa-newspaper mr-2"></i> News</li>
+            <li><i className="fa-solid fa-trophy mr-2"></i> Sports</li>
+            <li><i className="fa-solid fa-film mr-2"></i> Movies</li>
+            <li><i className="fa-solid fa-graduation-cap mr-2"></i> Courses</li>
+            <li><i className="fa-solid fa-cart-shopping mr-2"></i> Shopping</li>
+            <li><i className="fa-solid fa-vest-patches mr-2"></i> Fashion</li>
           </ul>
         )}
-
-        <p className="h-[1.5px] bg-gray-300 mt-3"></p>
       </div>
     </>
   );

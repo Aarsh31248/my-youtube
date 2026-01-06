@@ -37,8 +37,9 @@ const Head = () => {
   }, [searchQuery, searchCache, getSearchSuggestions]);
 
   return (
-    <div className="sticky top-0 z-[60] bg-white grid grid-cols-12 items-center p-3 shadow-lg">
-      <div className="col-span-2 flex items-center gap-4">
+    <div className="sticky top-0 z-[60] bg-white flex items-center justify-between p-3 shadow-lg sm:grid sm:grid-cols-12">
+      {/* Left section */}
+      <div className="flex items-center gap-4 sm:col-span-2">
         <img
           onClick={() => dispatch(toogleMenu())}
           className="w-7 h-8 cursor-pointer"
@@ -54,7 +55,8 @@ const Head = () => {
         </a>
       </div>
 
-      <div className="col-span-8 flex justify-center">
+      {/* Search Section*/}
+      <div className="flex-1  px-3 sm:col-span-8 sm:flex sm:justify-center">
         <div className="relative w-full max-w-2xl">
           <div className="flex items-center">
             <input
@@ -64,12 +66,13 @@ const Head = () => {
               onBlur={() => setShowSuggestions(false)}
               placeholder="Search"
               type="text"
-              className="flex-1 border border-gray-400 rounded-l-full p-2"
+              className="flex-1 border border-gray-400 rounded-l-full p-2 text-sm sm:text-base"
             />
-            <button className="border border-gray-400 rounded-r-full px-5 hover:bg-gray-200">
-              <i className="fa-solid fa-magnifying-glass py-3"></i>
+            <button className="border border-gray-400 rounded-r-full px-4 hover:bg-gray-200">
+              <i className="fa-solid fa-magnifying-glass py-[10px] sm:py-3"></i>
             </button>
-            <i className="fa-solid fa-microphone text-[22px] ml-4 cursor-pointer"></i>
+
+            <i className="fa-solid fa-microphone hidden sm:block text-[22px] ml-4 cursor-pointer"></i>
           </div>
 
           {showSuggestions && suggestions.length > 0 && (
@@ -77,7 +80,7 @@ const Head = () => {
               {suggestions.map((sug) => (
                 <li
                   key={sug}
-                  className="px-4 py-2 text-lg hover:bg-gray-100 cursor-pointer flex items-center gap-3"
+                  className="px-4 py-2 text-sm sm:text-lg hover:bg-gray-100 cursor-pointer flex items-center gap-3"
                   onMouseDown={() => setSearchQuery(sug)}
                 >
                   <i className="fa-solid fa-magnifying-glass text-sm text-gray-500"></i>
@@ -89,7 +92,7 @@ const Head = () => {
         </div>
       </div>
 
-      <div className="col-span-2 flex justify-end items-center gap-6 pr-4">
+      <div className="hidden sm:flex sm:col-span-2 justify-end items-center gap-6 pr-4">
         <i className="fa-solid fa-bell text-[22px] cursor-pointer"></i>
         <img
           className="h-9 cursor-pointer"

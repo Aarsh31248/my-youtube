@@ -21,7 +21,7 @@ const LiveChat = () => {
   if (!isChatOpen) {
     return (
       <div
-        className="border border-gray-300 rounded-xl bg-white mb-6 px-4 py-3 flex justify-between items-center cursor-pointer"
+        className="border border-gray-300 rounded-xl  mb-6 px-4 py-3 flex justify-between items-center cursor-pointer bg-gray-100"
         onClick={() => dispatch(toggleChat())}
       >
         <span className="font-semibold">Live chat</span>

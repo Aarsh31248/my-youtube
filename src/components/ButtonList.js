@@ -18,12 +18,12 @@ const list = [
   "Chess",
   "Shopping",
   "Mixes",
-  "New to you"
+  "New to you",
 ];
 
 const ButtonList = () => {
   return (
-    <div className="flex overflow-x-auto whitespace-nowrap scrollbar-hide">
+    <div className="flex gap-1 sm:gap-0 overflow-x-auto scrollbar-hide px-1 sm:px-0">
       {list.map((item) => (
         <Button key={item} name={item} />
       ))}

@@ -9,8 +9,8 @@ const VideoContainer = () => {
 
   const getVideos = async () => {
     const data = await fetch("/.netlify/functions/videos");
-
     const json = await data.json();
+
     const validVideos = (json.items || []).filter(
       (video) =>
         typeof video.id === "string" &&
@@ -18,6 +18,7 @@ const VideoContainer = () => {
           video.snippet?.thumbnails?.high?.url) &&
         video.statistics?.viewCount
     );
+
     setVideos(validVideos);
   };
 
@@ -26,9 +27,20 @@ const VideoContainer = () => {
   }, []);
 
   return (
-    <div className="flex flex-wrap ml-4">
+    <div
+      className={`
+        sm:ml-4
+        mx-auto
+        flex flex-wrap justify-start
+        ${isMenuOpen ? "max-w-[1320px]" : "max-w-[1560px]"}
+      `}
+    >
       {videos.map((video) => (
-        <Link key={video.id} to={`/watch?v=${video.id}`}>
+        <Link
+          key={video.id}
+          to={`/watch?v=${video.id}`}
+          className="w-full sm:w-auto"
+        >
           <VideoCard info={video} isMenuOpen={isMenuOpen} />
         </Link>
       ))}

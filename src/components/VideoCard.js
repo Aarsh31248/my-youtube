@@ -17,14 +17,21 @@ const VideoCard = ({ info, isMenuOpen }) => {
 
   return (
     <div
-      className={`p-1 m-2 hover:shadow-lg rounded-xl hover:bg-gray-200 cursor-pointer
+      className={`
+        p-1 my-2 sm:m-2 rounded-xl cursor-pointer
+        hover:shadow-lg hover:bg-gray-200
         transition-all duration-300 ease-out hover:scale-[1.01]
-        ${isMenuOpen ? "w-[400px]" : "w-[480px]"}`}
+
+        w-full sm:w-auto
+        ${isMenuOpen
+          ? "sm:basis-[400px] sm:max-w-[400px]"
+          : "sm:basis-[480px] sm:max-w-[480px]"}
+      `}
     >
       <img
         src={thumbnails?.maxres?.url || thumbnails?.high?.url}
         alt="thumbnail"
-        className="rounded-xl"
+        className="rounded-xl w-full"
         onError={(e) => {
           e.currentTarget.style.display = "none";
         }}
@@ -35,9 +42,11 @@ const VideoCard = ({ info, isMenuOpen }) => {
           {title}
           <i className="fa-solid fa-ellipsis-vertical absolute right-0 top-1"></i>
         </li>
+
         <li className="font-semibold">
           {channelTitle} <i className="fa-solid fa-circle-check"></i>
         </li>
+
         <li className="text-sm text-gray-600">
           {formatNumber(Number(statistics.viewCount))} • {formattedDate}
         </li>
