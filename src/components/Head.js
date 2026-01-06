@@ -61,7 +61,7 @@ const Head = () => {
 
       {/* Search Section*/}
       <div className="col-span-6 sm:col-span-8 px-2 flex justify-center min-w-0">
-        <div className="relative w-full max-w-[180px] sm:max-w-2xl">
+        <div className="relative w-full max-w-[195px] ml-12 sm:max-w-2xl">
           <div className="flex items-center">
             <input
               value={searchQuery}
