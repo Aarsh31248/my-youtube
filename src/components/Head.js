@@ -18,7 +18,7 @@ const Head = () => {
     dispatch(
       cacheResults({
         [searchQuery]: json[1],
-      })
+      }),
     );
   }, [searchQuery, dispatch]);
 
@@ -46,14 +46,10 @@ const Head = () => {
           src="https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/What%20is%20a%20Hamburger%20Button.png"
           alt="menu"
         />
-        <a href="/">
+        <a href="/" className="shrink-0 md:ml-3">
           <img
-            className="
-              h-5 sm:h-6
-              min-w-[72px] sm:min-w-[96px]
-              object-contain
-              cursor-pointer"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2560px-YouTube_Logo_2017.svg.png"
+            className="h-5 sm:h-6 w-auto object-contain cursor-pointer"
+            src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"
             alt="youtube-logo"
           />
         </a>
